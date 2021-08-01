@@ -3,6 +3,7 @@ package com.xx1196.superherolist
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -13,5 +14,9 @@ class HeroHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         view.findViewById<TextView>(R.id.tvSuperHeroName).text = superHero.name
         view.findViewById<TextView>(R.id.tvPublisher).text = superHero.publisher
         Picasso.get().load(superHero.image).into(view.findViewById<ImageView>(R.id.ivHero))
+        view.setOnClickListener {
+            Toast.makeText(view.context, "Haz seleccionado a ${superHero.name} - ${superHero.realName}", Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 }
